@@ -1,10 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { levelSlice } from './levelSlice'
+import levelSlice from './levelSlice'
 
-const store = configureStore({
-    reducers: {
+export default configureStore({
+    reducer: {
         level: levelSlice,
-    }
+    },
 })
-
-export default store
