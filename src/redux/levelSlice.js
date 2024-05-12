@@ -15,7 +15,8 @@ const initialState = {
         { id: "7", type: 3, isOpened: false, isEnabled: true },
         { id: "8", type: 3, isOpened: false, isEnabled: true },
     ],
-    status: 'playing' // 'ended'
+    status: 'playing', // 'ended'
+    imgLib: 'Hearts'
 }
 
 export const levelSlice = createSlice({
@@ -61,5 +62,6 @@ export const { setIsOpenedTrue, setIsOpenedFalse, setIsEnabledFalse } = levelSli
 export const selectTiles = (state) => { return state.level.tiles }
 export const selectDif = (state) => { return state.level.dif }
 export const selectStatus = (state) => { return state.level.status }
+export const selectImgLib = (state) => { return state.level.imgLib }
 
 export default levelSlice.reducer

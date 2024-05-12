@@ -2,9 +2,14 @@ import style from "./LevelCreate.module.css";
 
 export default function LevelCreate() {
   return (
-    <div>
-      <span>level create</span>
-    </div>
+    <>
+      <div className={style.levelCard}>
+        <span>Имяимяимятмя</span>
+        <span>Сложность: 2</span>
+        <span>Групп: 4</span>
+        <span>icons: hearts</span>
+      </div>
+    </>
   );
 }
 

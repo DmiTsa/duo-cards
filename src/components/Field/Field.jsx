@@ -7,8 +7,10 @@ import {
   selectDif,
   selectTiles,
   selectStatus,
+  selectImgLib,
 } from "../../redux/levelSlice";
 import Tile from "../Tile/Tile";
+import imgLibController from "../lib/tileImages";
 import style from "./Field.module.css";
 
 export default function Field() {
@@ -18,6 +20,7 @@ export default function Field() {
   const tiles = useSelector(selectTiles);
   const dif = useSelector(selectDif);
   const levelStatus = useSelector(selectStatus);
+  const imgLib = useSelector(selectImgLib);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -56,7 +59,12 @@ export default function Field() {
     return (
       <div className={style.field}>
         {tiles.map((tile) => (
-          <Tile key={tile.id} tile={tile} click={tileClickHandler} />
+          <Tile
+            key={tile.id}
+            tile={tile}
+            imgLib={imgLibController(imgLib)}
+            click={tileClickHandler}
+          />
         ))}
       </div>
     );

@@ -18,6 +18,7 @@
     background: linear-gradient(to top, rgb(5, 158, 5), rgb(15, 188, 15), rgb(232, 240, 232));
     border-bottom: 2px solid rgb(2, 62, 2);
     height: 35px;
+    /* font-size: large; */
 }
 
 section {
