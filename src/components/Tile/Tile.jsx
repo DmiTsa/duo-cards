@@ -1,4 +1,4 @@
-import imgClosed from "../lib/svg/n.svg";
+import imgClosed from "../../lib/svg/n.svg";
 import style from "./Tile.module.css";
 
 export default function Card({ tile, imgLib, click }) {

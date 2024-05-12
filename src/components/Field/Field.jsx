@@ -10,7 +10,7 @@ import {
   selectImgLib,
 } from "../../redux/levelSlice";
 import Tile from "../Tile/Tile";
-import imgLibController from "../lib/tileImages";
+import imgLibController from "../../lib/tileImages";
 import style from "./Field.module.css";
 
 export default function Field() {

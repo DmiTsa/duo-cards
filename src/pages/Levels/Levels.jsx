@@ -1,14 +1,14 @@
-import style from "./LevelCreate.module.css";
+import LevelCardInfo from "../../components/LevelCardInfo/LevelCardInfo";
+// import style from "./Levels.module.css";
 
-export default function LevelCreate() {
+export default function Levels() {
   return (
     <>
-      <div className={style.levelCard}>
-        <span>Имяимяимятмя</span>
-        <span>Сложность: 2</span>
-        <span>Групп: 4</span>
-        <span>icons: hearts</span>
-      </div>
+      <LevelCardInfo dif={2} />
+      <LevelCardInfo dif={3} />
+      <LevelCardInfo dif={4} />
+      <LevelCardInfo dif={5} />
+      <LevelCardInfo dif={6} />
     </>
   );
 }

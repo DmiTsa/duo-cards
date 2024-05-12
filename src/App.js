@@ -1,5 +1,5 @@
-import CurrentGame from './pages/CurrentGame/CurrentGame';
-// import LevelCreate from './pages/LevelCreate/LevelCreate';
+// import CurrentGame from './pages/CurrentGame/CurrentGame';
+import Levels from './pages/Levels/Levels';
 import './App.css';
 
 function App() {
@@ -13,8 +13,8 @@ function App() {
       </header>
       <section>
         <div className='container'>
-          <CurrentGame />
-          {/* <LevelCreate /> */}
+          {/* <CurrentGame /> */}
+          <Levels />
         </div>
       </section>
     </div >
