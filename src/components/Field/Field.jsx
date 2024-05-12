@@ -6,6 +6,7 @@ import {
   setIsEnabledFalse,
   selectDif,
   selectTiles,
+  selectStatus,
 } from "../../redux/levelSlice";
 import Tile from "../Tile/Tile";
 import style from "./Field.module.css";
@@ -16,6 +17,7 @@ export default function Field() {
 
   const tiles = useSelector(selectTiles);
   const dif = useSelector(selectDif);
+  const levelStatus = useSelector(selectStatus);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,13 +29,16 @@ export default function Field() {
         .map((tile) => tile.type)
         .every((el) => el === matchedTiles[0].type);
 
-      console.log("isAllTypeMached", isAllTypeMached);
+      // const time =
       setTimeout(() => {
         isAllTypeMached
           ? dispatch(setIsEnabledFalse(currentTileId))
           : dispatch(setIsOpenedFalse(currentTileId));
       }, 700);
+      // console.log(time);
 
+      //all isEnabled - false
+      //redux
       setCurrentClick(0);
       setCurrentTileId([]);
       // clearTimeout(tileDelay);
@@ -47,11 +52,15 @@ export default function Field() {
     setCurrentClick(currentClick + 1);
   };
 
-  return (
-    <div className={style.field}>
-      {tiles.map((tile) => (
-        <Tile key={tile.id} tile={tile} click={tileClickHandler} />
-      ))}
-    </div>
-  );
+  if (levelStatus === "playing") {
+    return (
+      <div className={style.field}>
+        {tiles.map((tile) => (
+          <Tile key={tile.id} tile={tile} click={tileClickHandler} />
+        ))}
+      </div>
+    );
+  } else {
+    return <p>no level</p>;
+  }
 }

@@ -14,7 +14,8 @@ const initialState = {
         { id: "6", type: 2, isOpened: false, isEnabled: true },
         { id: "7", type: 3, isOpened: false, isEnabled: true },
         { id: "8", type: 3, isOpened: false, isEnabled: true },
-    ]
+    ],
+    status: 'playing' // 'ended'
 }
 
 export const levelSlice = createSlice({
@@ -59,5 +60,6 @@ export const { setIsOpenedTrue, setIsOpenedFalse, setIsEnabledFalse } = levelSli
 
 export const selectTiles = (state) => { return state.level.tiles }
 export const selectDif = (state) => { return state.level.dif }
+export const selectStatus = (state) => { return state.level.status }
 
 export default levelSlice.reducer

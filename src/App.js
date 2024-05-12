@@ -1,19 +1,23 @@
-import Field from './components/Field/Field';
+import CurrentGame from './pages/CurrentGame/CurrentGame';
+import LevelCreate from './pages/LevelCreate/LevelCreate';
 import './App.css';
 
 function App() {
 
   return (
     <div className="App">
-      <div className='container'>
-        <div className='leftSide'>
-          <p>leftside</p>
+      <header className='header'>
+        <div className='container'>
+          <span>header</span>
         </div>
-        <div className='rightSide'>
-          <Field />
+      </header>
+      <section>
+        <div className='container'>
+          <CurrentGame />
+          {/* <LevelCreate /> */}
         </div>
-      </div>
-    </div>
+      </section>
+    </div >
   );
 }
 
