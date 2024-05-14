@@ -4,23 +4,33 @@ import {
   setIsOpenedTrue,
   setIsOpenedFalse,
   setIsEnabledFalse,
+  setCurrentLevel,
   selectDif,
   selectTiles,
-  selectStatus,
   selectImgLib,
 } from "../../redux/levelSlice";
+import {
+  incrementCurrentLevel,
+  setActivePage,
+  selectNumberCurrentLevel,
+  selectCurrentLevel,
+} from "../../redux/gameSlice";
 import Tile from "../Tile/Tile";
 import imgLibController from "../../lib/tileImages";
+import fullLevelCreator from "../../utils/fullLevelCreator";
 import style from "./Field.module.css";
+
+const DELAY_MS = 700;
 
 export default function Field() {
   const [currentClick, setCurrentClick] = useState(0);
   const [currentTileId, setCurrentTileId] = useState([]);
 
+  const currentLevel = useSelector(selectCurrentLevel);
   const tiles = useSelector(selectTiles);
   const dif = useSelector(selectDif);
-  const levelStatus = useSelector(selectStatus);
   const imgLib = useSelector(selectImgLib);
+  const numberCurrentLevel = useSelector(selectNumberCurrentLevel);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,22 +42,40 @@ export default function Field() {
         .map((tile) => tile.type)
         .every((el) => el === matchedTiles[0].type);
 
-      // const time =
       setTimeout(() => {
         isAllTypeMached
           ? dispatch(setIsEnabledFalse(currentTileId))
           : dispatch(setIsOpenedFalse(currentTileId));
-      }, 700);
-      // console.log(time);
+      }, DELAY_MS);
 
-      //all isEnabled - false
-      //redux
       setCurrentClick(0);
       setCurrentTileId([]);
-      // clearTimeout(tileDelay);
     }
     // eslint-disable-next-line
   }, [currentClick, dif]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (tiles) {
+        const isEndLevel = tiles
+          .map((tile) => tile.isEnabled)
+          .every((el) => el === false);
+        if (isEndLevel) {
+          dispatch(incrementCurrentLevel());
+        }
+      }
+    }, DELAY_MS);
+    // eslint-disable-next-line
+  }, [tiles]);
+
+  useEffect(() => {
+    if (numberCurrentLevel < 10) {
+      dispatch(setCurrentLevel(fullLevelCreator(currentLevel)));
+    } else {
+      dispatch(setActivePage("gameOver"));
+    }
+    // eslint-disable-next-line
+  }, [numberCurrentLevel]);
 
   const tileClickHandler = (id) => {
     dispatch(setIsOpenedTrue(id));
@@ -55,10 +83,10 @@ export default function Field() {
     setCurrentClick(currentClick + 1);
   };
 
-  if (levelStatus === "playing") {
+  if (numberCurrentLevel >= 0 && numberCurrentLevel < 10) {
     return (
       <div className={style.field}>
-        {tiles.map((tile) => (
+        {tiles?.map((tile) => (
           <Tile
             key={tile.id}
             tile={tile}

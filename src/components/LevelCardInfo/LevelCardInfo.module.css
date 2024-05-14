@@ -1,37 +1,36 @@
 .levelCard {
     box-sizing: border-box;
+    margin: 10px;
     padding: 5px;
-    width: 180px;
+    width: 205px;
     height: 120px;
     border-radius: 15px 15px 15px 15px;
+    cursor: pointer;
+}
+
+.levelCard:active {
+    border-color: #f94144;
 }
 
 .easy {
-    background-color: rgb(84, 152, 84);
-    background: linear-gradient(to left bottom, green, white);
-    border: 2px solid rgb(72, 145, 92);
-
+    background-color: #90be6d;
+    background: linear-gradient(to left bottom, #90be6d, white);
+    border: 2px solid #285704;
+    color: #285704;
 }
 
 .normal {
-    background-color: rgb(77, 98, 160);
-    background: linear-gradient(to left bottom, rgb(4, 0, 128), white);
-    border: 2px solid rgb(66, 116, 165);
-
+    background-color: #577590;
+    background: linear-gradient(to left bottom, #577590, white);
+    border: 2px solid #072845;
+    color: #072845;
 }
 
 .hard {
-    background-color: rgb(192, 17, 17);
-    background: linear-gradient(to left bottom, rgb(203, 20, 35), white);
-    border: 2px solid rgb(197, 15, 15);
-
-}
-
-.unreal {
-    /* background-color: rgb(234, 8, 8); */
-    background: linear-gradient(to left bottom, rgb(177, 5, 5), white);
-    /* border: 2px solid rgb(123, 4, 4); */
-
+    background-color: #f94144;
+    background: linear-gradient(to left bottom, #f94144, white);
+    border: 2px solid #5f0e10;
+    color: #5f0e10;
 }
 
 .levelCard:hover {
@@ -42,10 +41,10 @@
     margin-bottom: 15px;
     font-size: large;
     font-weight: bold;
-    color: rgb(2, 96, 2);
+    /* color: rgb(2, 96, 2); */
 }
 
 .p {
     /* font-size: large; */
-    color: rgb(100, 73, 5);
+    color: #f3722c;
 }

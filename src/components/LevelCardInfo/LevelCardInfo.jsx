@@ -1,6 +1,6 @@
 import style from "./LevelCardInfo.module.css";
 
-export default function LevelCardInfo({ dif }) {
+export default function LevelCardInfo({ name, dif, sets, imgLib }) {
   let typeStyle;
 
   if (dif >= 2) {
@@ -14,14 +14,8 @@ export default function LevelCardInfo({ dif }) {
         typeStyle = style.levelCard + " " + style.normal;
         break;
 
-      case 5:
-        typeStyle = style.levelCard + " " + style.hard;
-        break;
-
       default:
-        console.log("unreal");
-
-        typeStyle = style.levelCard + " " + style.unreal;
+        typeStyle = style.levelCard + " " + style.hard;
         break;
     }
   } else {
@@ -30,11 +24,11 @@ export default function LevelCardInfo({ dif }) {
 
   return (
     <div className={typeStyle}>
-      <div className={style.name}>Default easy</div>
+      <div className={style.name}>{name}</div>
       <div>
-        <div className={style.p}>Сложность: 2</div>
-        <div className={style.p}>Групп: 4</div>
-        <div className={style.p}>Набор: Hearts</div>
+        <div className={style.p}>Сложность: {dif}</div>
+        <div className={style.p}>Групп: {sets}</div>
+        <div className={style.p}>Набор: {imgLib}</div>
       </div>
     </div>
   );

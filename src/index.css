@@ -13,7 +13,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: rgb(127, 179, 48);
+  background: #90be6d;
   /* background: linear-gradient(to right, transparent, mistyrose),
   url("critters.png"); */
 }

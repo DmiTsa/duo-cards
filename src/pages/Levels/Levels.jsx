@@ -1,15 +1,22 @@
 import LevelCardInfo from "../../components/LevelCardInfo/LevelCardInfo";
-// import style from "./Levels.module.css";
+import style from "./Levels.module.css";
 
 export default function Levels() {
   return (
-    <>
-      <LevelCardInfo dif={2} />
-      <LevelCardInfo dif={3} />
-      <LevelCardInfo dif={4} />
-      <LevelCardInfo dif={5} />
-      <LevelCardInfo dif={6} />
-    </>
+    <div className={style.levels}>
+      <div className={style.createGame}>
+        <span>createGame</span>
+      </div>
+      <div className={style.levelsSet}>
+        <LevelCardInfo name={"Default"} dif={2} sets={4} imgLib={"Hearts"} />
+        <LevelCardInfo name={"Default"} dif={3} sets={4} imgLib={"Hearts"} />
+        <LevelCardInfo name={"Default"} dif={2} sets={4} imgLib={"Hearts"} />
+        <LevelCardInfo name={"Default"} dif={5} sets={4} imgLib={"Hearts"} />
+        <LevelCardInfo name={"Default"} dif={2} sets={4} imgLib={"Hearts"} />
+        <LevelCardInfo name={"Default"} dif={3} sets={4} imgLib={"Hearts"} />
+        <LevelCardInfo name={"Default"} dif={5} sets={4} imgLib={"Hearts"} />
+      </div>
+    </div>
   );
 }
 
