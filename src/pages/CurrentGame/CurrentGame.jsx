@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-  // incrementCurrentLevel,
+  setActivePage,
   setLevels,
   selectorGameSet,
-  setActivePage,
+  selectLevels,
+  selectNumberCurrentLevel,
 } from "../../redux/gameSlice";
 // import { isEnd } from "../../redux/levelSlice";
 import GameProgress from "../../components/GameProgress/GameProgress";
 import Field from "../../components/Field/Field";
+import GameInfo from "../../components/GameInfo/GameInfo";
 import {
   EASY_GAMESET,
   NORMAL_GAMESET,
@@ -18,6 +20,8 @@ import style from "./CurrentGame.module.css";
 export default function CurrentGame() {
   const dispatch = useDispatch();
   const gameSet = useSelector(selectorGameSet);
+  const levels = useSelector(selectLevels);
+  const numberCurrentLevel = useSelector(selectNumberCurrentLevel);
 
   switch (gameSet) {
     case "easy":
@@ -43,13 +47,8 @@ export default function CurrentGame() {
   return (
     <>
       <div className={style.leftSide}>
-        <div className={style.gameInfo}>
-          <span>gameinfo</span>
-        </div>
-        <GameProgress />
-        <div className={style.buttons}>
-          <span>buttons</span>
-        </div>
+        <GameInfo />
+        <GameProgress levels={levels} numberCurrentLevel={numberCurrentLevel} />
       </div>
       <div className={style.rightSide}>
         <Field />

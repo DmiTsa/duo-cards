@@ -1,7 +1,4 @@
 .progressPart {
-    /* dev  */
-    background-color: rgb(201, 114, 15);
-
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -11,6 +8,7 @@
     height: 35px;
     border: 1px solid black;
     border-radius: 3px;
+    user-select: none
 }
 
 .delimeter {
@@ -44,6 +42,8 @@
 }
 
 .ended {
+    /* border-width: 3px;
+    border-radius: 12px; */
     background-color: lightslategrey;
     background: linear-gradient(to left bottom, lightslategrey, white);
     border: 1px solid #285704;

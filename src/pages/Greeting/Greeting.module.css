@@ -17,9 +17,6 @@
 }
 
 .buttons {
-    /* dev  */
-    /* background-color: aqua; */
-
     width: 260px;
     height: 180px;
 }
@@ -58,4 +55,15 @@
 
 .custom {
     background-color: #43aa8b;
+}
+
+.user {}
+
+.userInput {
+    width: min-content;
+    outline: none;
+    padding: 3px 5px;
+    border: none;
+    color: #f3722c;
+    background-color: none;
 }

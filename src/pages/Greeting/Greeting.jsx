@@ -31,6 +31,7 @@ export default function Greeting({ gameClick }) {
             onClick={(e) => gameClick(e.currentTarget)}
           />
           <input
+            disabled
             id="custom"
             className={style.button + " " + style.custom}
             type="button"
@@ -38,6 +39,11 @@ export default function Greeting({ gameClick }) {
             onClick={(e) => gameClick(e.currentTarget)}
           />
         </div>
+        {/* <div className={style.user}>
+          Добро пожаловать,{" "}
+          <input className={style.userInput} type="text" value={"user"}></input>
+          !
+        </div> */}
       </div>
     </>
   );

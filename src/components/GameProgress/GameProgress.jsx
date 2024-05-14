@@ -1,14 +1,26 @@
 import ProgressPart from "../ProgressPart/ProgressPart";
 import style from "./GameProgress.module.css";
 
-export default function GameProgress() {
-  //нужен стейт для отслеживания активной ячейки и пройденных
-  //можно сделать как массив с остальными значениями
+export default function GameProgress({ levels, numberCurrentLevel }) {
   return (
     <div className={style.GameProgress}>
-      <ProgressPart dif={2} sets={4} />
-      <ProgressPart dif={3} sets={9} />
-      <ProgressPart dif={3} sets={15} />
+      {levels.map((lev, i) => {
+        return (
+          <ProgressPart
+            key={lev.id}
+            dif={lev.dif}
+            sets={lev.sets}
+            isActive={i === numberCurrentLevel}
+            isEnded={i < numberCurrentLevel}
+          />
+        );
+      })}
     </div>
   );
 }
+
+//levels
+// dif:2
+// imgLib:"Hearts"
+// name:"easy game 1"
+// sets:2

@@ -32,6 +32,7 @@ export const { incrementCurrentLevel, setGameSet, setActivePage, setLevels } = g
 export const selectorActivePage = (state) => { return state.game.activePage }
 export const selectorGameSet = (state) => { return state.game.gameSet }
 export const selectNumberCurrentLevel = (state) => { return state.game.currentLevel }
+export const selectLevels = (state) => { return state.game.levels }
 export const selectCurrentLevel = (state) => { return state.game.levels[state.game.currentLevel] }
 
 export default gameSlice.reducer
