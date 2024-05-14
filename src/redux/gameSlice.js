@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    activePage: 'greeting',
+    activePage: 'gameOver', //'greeting'
     gameSet: '',
     levels: [],
     currentLevel: -1,
@@ -11,6 +11,7 @@ export const gameSlice = createSlice({
     name: 'game',
     initialState: initialState,
     reducers: {
+
         setActivePage: (state, action) => {
             return { ...state, activePage: action.payload }
         },

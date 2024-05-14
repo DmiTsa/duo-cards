@@ -57,13 +57,19 @@
     background-color: #43aa8b;
 }
 
-.user {}
+.user {
+    font-size: 20px;
+    margin-left: 20px;
+}
 
 .userInput {
     width: min-content;
     outline: none;
     padding: 3px 5px;
     border: none;
+    font-size: 20px;
     color: #f3722c;
-    background-color: none;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
 }

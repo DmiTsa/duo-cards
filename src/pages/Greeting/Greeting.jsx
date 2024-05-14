@@ -5,14 +5,17 @@ import {
   setGameSet,
   setActivePage,
 } from "../../redux/gameSlice";
+import { setCurrentUser } from "../../redux/userSlice";
 import {
   EASY_GAMESET,
   NORMAL_GAMESET,
   HARD_GAMESET,
 } from "../../data/gameSets";
 import style from "./Greeting.module.css";
+import { useState } from "react";
 
 export default function Greeting() {
+  const [userName, setUserName] = useState("user");
   const dispatch = useDispatch();
 
   const gameClickHandler = (target) => {
@@ -20,7 +23,6 @@ export default function Greeting() {
       case "easy":
         dispatch(setGameSet("easy"));
         dispatch(setLevels(EASY_GAMESET));
-
         break;
       case "normal":
         dispatch(setGameSet("normal"));
@@ -38,7 +40,7 @@ export default function Greeting() {
         console.log("Error");
         break;
     }
-
+    dispatch(setCurrentUser(userName));
     dispatch(incrementCurrentLevel());
     dispatch(setActivePage("currentGame"));
   };
@@ -46,6 +48,15 @@ export default function Greeting() {
   return (
     <>
       <div className={style.greeting}>
+        <div className={style.user}>
+          <span>Добро пожаловать,</span>
+          <input
+            className={style.userInput}
+            type="text"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          ></input>
+        </div>
         <span className={style.bigText + " " + style.firstLetter}>D</span>
         <span className={style.bigText}>uo</span>
         <span className={style.bigText + " " + style.firstLetter}>C</span>
@@ -81,11 +92,6 @@ export default function Greeting() {
             onClick={(e) => gameClickHandler(e.currentTarget)}
           />
         </div>
-        {/* <div className={style.user}>
-          Добро пожаловать,{" "}
-          <input className={style.userInput} type="text" value={"user"}></input>
-          !
-        </div> */}
       </div>
     </>
   );
