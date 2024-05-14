@@ -1,48 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setActivePage,
-  setLevels,
-  selectorGameSet,
-  selectLevels,
-  selectNumberCurrentLevel,
-} from "../../redux/gameSlice";
-// import { isEnd } from "../../redux/levelSlice";
+import { useSelector } from "react-redux";
+import { selectLevels, selectNumberCurrentLevel } from "../../redux/gameSlice";
 import GameProgress from "../../components/GameProgress/GameProgress";
 import Field from "../../components/Field/Field";
 import GameInfo from "../../components/GameInfo/GameInfo";
-import {
-  EASY_GAMESET,
-  NORMAL_GAMESET,
-  HARD_GAMESET,
-} from "../../data/gameSets";
 import style from "./CurrentGame.module.css";
 
 export default function CurrentGame() {
-  const dispatch = useDispatch();
-  const gameSet = useSelector(selectorGameSet);
   const levels = useSelector(selectLevels);
   const numberCurrentLevel = useSelector(selectNumberCurrentLevel);
-
-  switch (gameSet) {
-    case "easy":
-      dispatch(setLevels(EASY_GAMESET));
-      break;
-    case "normal":
-      dispatch(setLevels(NORMAL_GAMESET));
-      break;
-    case "hard":
-      dispatch(setLevels(HARD_GAMESET));
-      break;
-    // case "custom":
-    //   dispatch(setLevels(CUSTOM_GAMESET));
-    //   break;
-
-    default:
-      console.log("Error");
-      break;
-  }
-
-  dispatch(setActivePage("currentGame"));
 
   return (
     <>

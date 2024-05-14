@@ -1,6 +1,48 @@
+import { useDispatch } from "react-redux";
+import {
+  incrementCurrentLevel,
+  setLevels,
+  setGameSet,
+  setActivePage,
+} from "../../redux/gameSlice";
+import {
+  EASY_GAMESET,
+  NORMAL_GAMESET,
+  HARD_GAMESET,
+} from "../../data/gameSets";
 import style from "./Greeting.module.css";
 
-export default function Greeting({ gameClick }) {
+export default function Greeting() {
+  const dispatch = useDispatch();
+
+  const gameClickHandler = (target) => {
+    switch (target.id) {
+      case "easy":
+        dispatch(setGameSet("easy"));
+        dispatch(setLevels(EASY_GAMESET));
+
+        break;
+      case "normal":
+        dispatch(setGameSet("normal"));
+        dispatch(setLevels(NORMAL_GAMESET));
+        break;
+      case "hard":
+        dispatch(setGameSet("hard"));
+        dispatch(setLevels(HARD_GAMESET));
+        break;
+      // case 'custom':
+      //   dispatch(setGameSet('custom'))
+      //   break;
+
+      default:
+        console.log("Error");
+        break;
+    }
+
+    dispatch(incrementCurrentLevel());
+    dispatch(setActivePage("currentGame"));
+  };
+
   return (
     <>
       <div className={style.greeting}>
@@ -14,21 +56,21 @@ export default function Greeting({ gameClick }) {
             className={style.button + " " + style.easy}
             type="button"
             value={"Легкая игра"}
-            onClick={(e) => gameClick(e.currentTarget)}
+            onClick={(e) => gameClickHandler(e.currentTarget)}
           />
           <input
             id="normal"
             className={style.button + " " + style.normal}
             type="button"
             value={"Обычная игра"}
-            onClick={(e) => gameClick(e.currentTarget)}
+            onClick={(e) => gameClickHandler(e.currentTarget)}
           />
           <input
             id="hard"
             className={style.button + " " + style.hard}
             type="button"
             value={"Сложная игра"}
-            onClick={(e) => gameClick(e.currentTarget)}
+            onClick={(e) => gameClickHandler(e.currentTarget)}
           />
           <input
             disabled
@@ -36,7 +78,7 @@ export default function Greeting({ gameClick }) {
             className={style.button + " " + style.custom}
             type="button"
             value={"Создать игру"}
-            onClick={(e) => gameClick(e.currentTarget)}
+            onClick={(e) => gameClickHandler(e.currentTarget)}
           />
         </div>
         {/* <div className={style.user}>

@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    activePage: 'greeting', // dev     'greeting' 'currentGame'
-    gameSet: '', // EASY_GAMESET
+    activePage: 'greeting',
+    gameSet: '',
     levels: [],
     currentLevel: -1,
 }
@@ -30,7 +30,7 @@ export const gameSlice = createSlice({
 export const { incrementCurrentLevel, setGameSet, setActivePage, setLevels } = gameSlice.actions
 
 export const selectorActivePage = (state) => { return state.game.activePage }
-export const selectorGameSet = (state) => { return state.game.gameSet }
+// export const selectorGameSet = (state) => { return state.game.gameSet }
 export const selectNumberCurrentLevel = (state) => { return state.game.currentLevel }
 export const selectLevels = (state) => { return state.game.levels }
 export const selectCurrentLevel = (state) => { return state.game.levels[state.game.currentLevel] }
