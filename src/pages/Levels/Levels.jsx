@@ -1,3 +1,4 @@
+import GameProgress from "../../components/GameProgress/GameProgress";
 import LevelCardInfo from "../../components/LevelCardInfo/LevelCardInfo";
 import style from "./Levels.module.css";
 
@@ -5,7 +6,7 @@ export default function Levels() {
   return (
     <div className={style.levels}>
       <div className={style.createGame}>
-        <span>createGame</span>
+        {/* <GameProgress levels={levels} numberCurrentLevel={numberCurrentLevel}/> */}
       </div>
       <div className={style.levelsSet}>
         <LevelCardInfo name={"Default"} dif={2} sets={4} imgLib={"Hearts"} />

@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    activePage: 'gameOver', //'greeting'
+    activePage: 'levels', //'greeting'
     gameSet: '',
     levels: [],
     currentLevel: -1,
+    lives: 5,
 }
 
 export const gameSlice = createSlice({
@@ -22,16 +23,24 @@ export const gameSlice = createSlice({
             return { ...state, levels: action.payload }
         },
 
+        decrementLive: (state) => {
+            return { ...state, lives: state.lives === 0 ? 0 : state.lives - 1 }
+        },
+
         incrementCurrentLevel: (state) => {
             return { ...state, currentLevel: state.currentLevel + 1 }
+        },
+
+        setLivesFromState: (state) => {
+            return { ...state, lives: state.lives + state.levels[state.currentLevel].lives }
         }
     }
 })
 
-export const { incrementCurrentLevel, setGameSet, setActivePage, setLevels } = gameSlice.actions
+export const { incrementCurrentLevel, setLivesFromState, decrementLive, setGameSet, setActivePage, setLevels } = gameSlice.actions
 
 export const selectorActivePage = (state) => { return state.game.activePage }
-// export const selectorGameSet = (state) => { return state.game.gameSet }
+export const selectLives = (state) => { return state.game.lives }
 export const selectNumberCurrentLevel = (state) => { return state.game.currentLevel }
 export const selectLevels = (state) => { return state.game.levels }
 export const selectCurrentLevel = (state) => { return state.game.levels[state.game.currentLevel] }

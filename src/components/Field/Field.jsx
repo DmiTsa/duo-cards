@@ -10,10 +10,13 @@ import {
   selectImgLib,
 } from "../../redux/levelSlice";
 import {
+  decrementLive,
+  setLivesFromState,
   incrementCurrentLevel,
   setActivePage,
   selectNumberCurrentLevel,
   selectCurrentLevel,
+  selectLives,
 } from "../../redux/gameSlice";
 import Tile from "../Tile/Tile";
 import imgLibController from "../../lib/tileImages";
@@ -26,6 +29,7 @@ export default function Field() {
   const [currentClick, setCurrentClick] = useState(0);
   const [currentTileId, setCurrentTileId] = useState([]);
 
+  const lives = useSelector(selectLives);
   const currentLevel = useSelector(selectCurrentLevel);
   const tiles = useSelector(selectTiles);
   const dif = useSelector(selectDif);
@@ -34,6 +38,12 @@ export default function Field() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("render field");
+
+    lives === 0
+      ? dispatch(setActivePage("gameOver"))
+      : dispatch(decrementLive());
+
     if (currentClick === dif) {
       const matchedTiles = tiles.filter((tile) =>
         currentTileId.includes(tile.id)
@@ -52,7 +62,7 @@ export default function Field() {
       setCurrentTileId([]);
     }
     // eslint-disable-next-line
-  }, [currentClick, dif]);
+  }, [currentClick]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -62,6 +72,7 @@ export default function Field() {
           .every((el) => el === false);
         if (isEndLevel) {
           dispatch(incrementCurrentLevel());
+          dispatch(setLivesFromState());
         }
       }
     }, DELAY_MS);

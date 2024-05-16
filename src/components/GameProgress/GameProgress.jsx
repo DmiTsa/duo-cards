@@ -8,6 +8,7 @@ export default function GameProgress({ levels, numberCurrentLevel }) {
         return (
           <ProgressPart
             key={lev.id}
+            lives={lev.lives}
             dif={lev.dif}
             sets={lev.sets}
             isActive={i === numberCurrentLevel}

@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import {
+  setLivesFromState,
   incrementCurrentLevel,
   setLevels,
   setGameSet,
@@ -42,6 +43,7 @@ export default function Greeting() {
     }
     dispatch(setCurrentUser(userName));
     dispatch(incrementCurrentLevel());
+    dispatch(setLivesFromState());
     dispatch(setActivePage("currentGame"));
   };
 
